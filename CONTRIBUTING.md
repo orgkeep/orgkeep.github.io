@@ -34,4 +34,6 @@ license).
 
 - The site is plain HTML and CSS, without a build step: open `index.html` in a browser, or serve the folder with
   `python3 -m http.server 8000`, and check the page at desktop and phone widths.
-- One change per pull request, on a branch created from `main`. Pull requests are squash merged.
+- One change per pull request, on a branch created from `main`; bring `main` in with a rebase, not a merge. A pull
+  request is squashed into one commit, unless its commits are clean and each makes sense on its own: they are then
+  merged as they are.
