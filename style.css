@@ -85,6 +85,7 @@ h1, h2, h3, h4 {
 
 .topbar nav {
   display: flex;
+  align-items: center;
   gap: 24px;
 }
 
