@@ -32,8 +32,13 @@ license).
 
 ## Pull requests
 
-- The site is plain HTML and CSS, without a build step: open `index.html` in a browser, or serve the folder with
-  `python3 -m http.server 8000`, and check the page at desktop and phone widths.
+- The site is built with Astro Starlight (Node.js 24 recommended, 22.12 at least): `npm ci` once, then `npm run dev`
+  to work on it (http://localhost:4321) and `npm run build` to check that it builds into `dist/`. Check the home page
+  at desktop and phone widths.
+- The home page is plain HTML and CSS in `public/` (`index.html`, `style.css`, `images/`), published as is.
+- `src/content/docs/docs/latest/` is the documentation, copied from `documentation/` of
+  [orgkeep/orgkeep](https://github.com/orgkeep/orgkeep) at each release: do not edit it here, the next sync would
+  erase the change. A fix of the documentation is a pull request to that repository.
 - One change per pull request, on a branch created from `main`; bring `main` in with a rebase, not a merge. A pull
   request is squashed into one commit, unless its commits are clean and each makes sense on its own: they are then
   merged as they are.
