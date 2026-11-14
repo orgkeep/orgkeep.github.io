@@ -13,21 +13,11 @@ export default defineConfig({
       description: 'Documentation of Orgkeep: multi-tenant B2B on Keycloak.',
       favicon: '/images/favicon.png',
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/orgkeep/orgkeep' }],
-      // Add a group here when its first pages are written: guides per audience (realm owner, org admin,
-      // integrator, operator), concepts. A later version is another folder, docs/<version>/.
-      sidebar: [
-        {
-          label: 'Start here',
-          items: [
-            { label: 'Overview', slug: 'docs/latest' },
-            { label: 'Getting started', slug: 'docs/latest/getting-started' },
-          ],
-        },
-        {
-          label: 'Reference',
-          items: [{ autogenerate: { directory: 'docs/latest/reference' } }],
-        },
-      ],
+      // The whole synced tree, so that this repository never lists pages: a page is placed by the `sidebar.order`
+      // of its front matter, a folder (reference/, later guides/, concepts/...) becomes a group. A later version
+      // is another folder, docs/<version>/, with its own entry here.
+      customCss: ['./src/styles/custom.css'],
+      sidebar: [{ autogenerate: { directory: 'docs/latest' } }],
     }),
   ],
 });

@@ -1,0 +1,4 @@
+/* A group of the sidebar is a folder of the synced documentation: its label is the name of the folder */
+.sidebar-content .group-label .large {
+  text-transform: capitalize;
+}
