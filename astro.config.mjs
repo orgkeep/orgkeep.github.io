@@ -17,6 +17,11 @@ export default defineConfig({
       // of its front matter, a folder (reference/, later guides/, concepts/...) becomes a group. A later version
       // is another folder, docs/<version>/, with its own entry here.
       customCss: ['./src/styles/custom.css'],
+      // Always light, like the home page: no dark theme, no theme selector
+      components: {
+        ThemeProvider: './src/components/LightThemeProvider.astro',
+        ThemeSelect: './src/components/NoThemeSelect.astro',
+      },
       sidebar: [{ autogenerate: { directory: 'docs/latest' } }],
     }),
   ],

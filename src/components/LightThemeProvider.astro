@@ -1,0 +1,8 @@
+---
+// The site stays light, like the home page: replaces the ThemeProvider of Starlight, which follows the system or the
+// choice stored by its theme selector (removed too, see NoThemeSelect.astro).
+---
+
+<script is:inline>
+	document.documentElement.dataset.theme = 'light';
+</script>
