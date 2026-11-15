@@ -17,6 +17,8 @@ export default defineConfig({
       // of its front matter, a folder (reference/, later guides/, concepts/...) becomes a group. A later version
       // is another folder, docs/<version>/, with its own entry here.
       customCss: ['./src/styles/custom.css'],
+      // Images of the documentation open in a lightbox on click, like the screenshots of the home page
+      head: [{ tag: 'script', attrs: { src: '/scripts/docs-lightbox.js', defer: true } }],
       // Always light, like the home page: no dark theme, no theme selector
       components: {
         ThemeProvider: './src/components/LightThemeProvider.astro',
