@@ -21,6 +21,8 @@ export default defineConfig({
       components: {
         ThemeProvider: './src/components/LightThemeProvider.astro',
         ThemeSelect: './src/components/NoThemeSelect.astro',
+        // The logo of the home page instead of the word "Orgkeep" in the header
+        SiteTitle: './src/components/LogoSiteTitle.astro',
       },
       sidebar: [{ autogenerate: { directory: 'docs/latest' } }],
     }),

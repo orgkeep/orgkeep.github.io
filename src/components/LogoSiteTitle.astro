@@ -1,0 +1,22 @@
+---
+// Replaces the SiteTitle of Starlight: the logo of the home page (public/images/logo.png) instead of the text
+// "Orgkeep documentation", which the pages already repeat. The full title stays for screen readers.
+const { siteTitle, siteTitleHref } = Astro.locals.starlightRoute;
+---
+
+<a href={siteTitleHref} class="site-title">
+	<img src="/images/logo.png" alt="" width="250" height="100" />
+	<span class="sr-only">{siteTitle}</span>
+</a>
+
+<style>
+	.site-title {
+		display: flex;
+		align-items: center;
+		min-width: 0;
+	}
+	img {
+		height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
+		width: auto;
+	}
+</style>
