@@ -15,15 +15,23 @@
 
 <header class="topbar">
   <div class="container topbar-inner">
-    <a href="#" class="brand"><img src="images/logo.png" alt="Orgkeep" width="125" height="50"></a>
+    <a href="/" class="brand"><img src="/images/logo.png" alt="Orgkeep" width="125" height="50"></a>
     <nav>
-      <a href="#features">Features</a>
-      <a href="#tour">Tour</a>
-      <a href="#tokens">Tokens</a>
-      <a href="#quick-start">Quick start</a>
-      <a href="docs/latest/">Docs</a>
+      <a href="/news/">News</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Resources <span class="nav-caret">&#9662;</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="/tour/">Quick tour</a>
+          <a href="/docs/latest/getting-started/">Getting started</a>
+          <a href="/docs/latest/">Documentation</a>
+        </div>
+      </div>
+      <a href="/download/">Download</a>
       <a href="https://github.com/orgs/orgkeep/projects/3">Roadmap</a>
-      <a href="https://github.com/orgkeep" class="nav-github">GitHub</a>
+      <a href="https://github.com/orgkeep" class="nav-github">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+        GitHub
+      </a>
     </nav>
   </div>
 </header>
@@ -104,53 +112,45 @@
     </div>
   </section>
 
-  <section class="section" id="tour">
+  <section class="section" id="compare">
     <div class="container">
-      <h2>A dashboard for the realm owner</h2>
-      <p class="section-lead">Everything the REST API does, without building screens. Click a screenshot to see it full size.</p>
-
-      <div class="tour-item">
-        <div class="tour-text">
-          <h3>What each organisation negotiated</h3>
-          <p>
-            The products of an organisation, per catalog: the features it bought and its quotas. A simple product has
-            one quota, a metered product one per engine it bought.
-          </p>
-        </div>
-        <a href="images/organisation-products.png" class="shot"><img src="images/organisation-products.png" alt="The products of the organisation acme with their quotas and bought features" loading="lazy" width="1440" height="800"></a>
-      </div>
-
-      <div class="tour-item reverse">
-        <div class="tour-text">
-          <h3>Your catalogs and products</h3>
-          <p>
-            One catalog per environment, its products, their features and parameters, and the roles valid for the whole
-            catalog. Each page shows what your APIs will find in the tokens.
-          </p>
-        </div>
-        <a href="images/product.png" class="shot"><img src="images/product.png" alt="A product of the catalog prod with its features, two of them metered" loading="lazy" width="1440" height="800"></a>
-      </div>
-
-      <div class="tour-item">
-        <div class="tour-text">
-          <h3>Teams, run by the org admins</h3>
-          <p>
-            An org admin gives the products of the organisation to a team, with some of the features it bought and
-            optionally a budget of its own. Members get it at their next login.
-          </p>
-        </div>
-        <a href="images/team.png" class="shot"><img src="images/team.png" alt="The team sales of acme: its members and the products it gives" loading="lazy" width="1440" height="800"></a>
-      </div>
-
-      <div class="tour-item reverse">
-        <div class="tour-text">
-          <h3>See the token before your users do</h3>
-          <p>
-            The claims a member would get, computed by Keycloak itself, for the catalogs an application asks for.
-            Nothing that could be used to call an API.
-          </p>
-        </div>
-        <a href="images/token-preview.png" class="shot"><img src="images/token-preview.png" alt="The token preview of Paul: the roles of the catalog prod" loading="lazy" width="1440" height="800"></a>
+      <h2>What Orgkeep adds on top of Keycloak</h2>
+      <p class="section-lead">
+        Both rely on Keycloak 26's native Organizations. The real question is what it takes to turn that into an
+        actual B2B product on top.
+      </p>
+      <div class="table-scroll">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Built by hand on Keycloak 26</th>
+              <th>Orgkeep</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Delegated admin per organisation</td>
+              <td>to design and secure yourself (scope the API per org, keep one org's admin from seeing another's)</td>
+              <td>ready to use</td>
+            </tr>
+            <tr>
+              <td>Creating an organisation</td>
+              <td>several API calls to script and maintain</td>
+              <td>one call</td>
+            </tr>
+            <tr>
+              <td>Catalog of products, features, quotas</td>
+              <td>no built-in concept &mdash; the whole data model and token mappers are yours to design</td>
+              <td>ready to use</td>
+            </tr>
+            <tr>
+              <td>Lightweight tokens</td>
+              <td>to implement</td>
+              <td>a single switch</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -195,24 +195,15 @@
 
   <section class="section" id="quick-start">
     <div class="container">
-      <h2>Try it in two minutes</h2>
-      <p class="section-lead">The demo runs Keycloak, PostgreSQL, Orgkeep, Mailpit and the example APIs, with demo data. You only need Docker.</p>
-<pre class="code"><code>git clone https://github.com/orgkeep/orgkeep-examples.git
-cd orgkeep-examples/docker-compose
-docker compose up -d --build</code></pre>
-      <p>
-        Then open <strong>http://localhost:8284</strong> and log in as <code>realm-owner</code> (password
-        <code>password</code>) to see the realm owner screens, or as <code>org-owner</code> for the screens of an org
-        admin. The <a href="https://github.com/orgkeep/orgkeep-examples/tree/main/docker-compose">demo guide</a> lists
-        every account and walks through the APIs. The <a href="docs/latest/">documentation</a> goes further: getting
-        started, then the whole configuration.
+      <h2>Try it</h2>
+      <p class="section-lead">
+        A demo stack &mdash; Keycloak, PostgreSQL, Orgkeep, Mailpit and example APIs, with demo data &mdash; is ready to
+        run. You only need Docker.
       </p>
-      <p>
-        Orgkeep is an <strong>early preview</strong>: ready to be tried, not yet to run in production, with no upgrade
-        path between 0.x versions and no service accounts yet. The
-        <a href="https://github.com/orgkeep/orgkeep#readme">README</a> lists the known limitations, and
-        your feedback is welcome in the <a href="https://github.com/orgkeep/orgkeep/issues">issues</a>.
-      </p>
+      <div class="hero-actions">
+        <a href="/download/" class="button primary">Download</a>
+        <a href="/docs/latest/getting-started/" class="button secondary">Getting started guide</a>
+      </div>
 
       <h3 class="subhead">Two ways to use it</h3>
       <div class="ways">

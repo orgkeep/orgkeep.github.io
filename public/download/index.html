@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orgkeep: download</title>
+  <meta name="description" content="Download Orgkeep: the GHCR images and the docker-compose demo stack.">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="stylesheet" href="/style.css">
+  <meta property="og:title" content="Orgkeep: download">
+  <meta property="og:description" content="The GHCR images and the docker-compose demo stack.">
+  <meta property="og:image" content="https://orgkeep.org/images/organisations.png">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a href="/" class="brand"><img src="/images/logo.png" alt="Orgkeep" width="125" height="50"></a>
+    <nav>
+      <a href="/news/">News</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Resources <span class="nav-caret">&#9662;</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="/tour/">Quick tour</a>
+          <a href="/docs/latest/getting-started/">Getting started</a>
+          <a href="/docs/latest/">Documentation</a>
+        </div>
+      </div>
+      <a href="/download/">Download</a>
+      <a href="https://github.com/orgs/orgkeep/projects/3">Roadmap</a>
+      <a href="https://github.com/orgkeep" class="nav-github">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="page-title">Download</h1>
+      <p class="section-lead">
+        Orgkeep ships as container images, published on GitHub Container Registry. Nothing to build, only Docker.
+      </p>
+
+      <div class="table-scroll">
+        <table class="download-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>What it is</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>orgkeep/orgkeep-core</code></td>
+              <td>White label core (REST API only)</td>
+              <td><a href="https://github.com/orgkeep/orgkeep/pkgs/container/orgkeep-core">View on GHCR &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><code>orgkeep/orgkeep</code></td>
+              <td>White label core (REST API + frontend)</td>
+              <td><a href="https://github.com/orgkeep/orgkeep/pkgs/container/orgkeep">View on GHCR &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><code>orgkeep/orgkeep-keycloak</code></td>
+              <td>Keycloak + Orgkeep theme</td>
+              <td><a href="https://github.com/orgkeep/orgkeep/pkgs/container/orgkeep-keycloak">View on GHCR &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Images are tagged by release (for example <code>:0.1.0</code>) as well as <code>:latest</code>. Pin a version
+        in production &mdash; Orgkeep is still 0.x, with no upgrade path between versions yet.
+      </p>
+
+      <h3 class="subhead">Try the demo stack</h3>
+      <p class="section-lead">
+        Keycloak, PostgreSQL, Orgkeep, Mailpit and example APIs, with demo organisations, accounts and catalogs
+        already set up.
+      </p>
+      <pre class="code"><code>git clone https://github.com/orgkeep/orgkeep-examples.git
+cd orgkeep-examples/docker-compose
+docker compose up -d --build</code></pre>
+      <p>
+        Then open <strong>http://localhost:8284</strong> and log in as <code>realm-owner</code> (password
+        <code>password</code>). The <a href="/docs/latest/getting-started/">getting started guide</a> walks through
+        the demo accounts and the first screens to look at.
+      </p>
+      <p>
+        Orgkeep is an <strong>early preview</strong>: ready to be tried, not yet to run in production, with no
+        upgrade path between 0.x versions and no service accounts yet. The
+        <a href="https://github.com/orgkeep/orgkeep#readme">README</a> lists the known limitations, and your
+        feedback is welcome in the <a href="https://github.com/orgkeep/orgkeep/issues">issues</a>.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>Orgkeep is open source under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>. &copy; 2026 Vincent Morsiani.</p>
+    <p class="small">Keycloak is a trademark of The Linux Foundation. Orgkeep is an independent project, not affiliated with or endorsed by the Keycloak project.</p>
+  </div>
+</footer>
+
+</body>
+</html>
