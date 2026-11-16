@@ -10,6 +10,7 @@
   --bg-alt: #f5f8fc;
   --code-bg: #0f1a33;
   --code-text: #dbe6ff;
+  --blue-tint: #eef5fc;
   --radius: 10px;
 }
 
@@ -100,9 +101,85 @@ h1, h2, h3, h4 {
 }
 
 .nav-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 4px 12px;
+}
+
+/* Resources dropdown, CSS-only */
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.nav-dropdown-toggle:hover,
+.nav-dropdown:focus-within .nav-dropdown-toggle {
+  color: var(--blue);
+}
+
+.nav-caret {
+  font-size: 0.7em;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  min-width: 200px;
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 10px 30px rgba(13, 27, 62, 0.12);
+}
+
+/* Invisible bridge covering the visual gap (the menu's margin-top) between the trigger and the menu.
+   Without it, that strip belongs to neither element's hoverable box: the pointer loses :hover there
+   while moving from the button down to a menu item, and the menu closes before it is reached. Sized
+   and positioned relative to the menu itself, so it always matches the menu's actual width, including
+   when the menu is wider than the trigger button. Out of flow, like the menu: no effect on nav layout. */
+.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  display: flex;
+}
+
+.nav-dropdown-menu a {
+  padding: 8px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a:focus {
+  background: var(--bg-alt);
 }
 
 /* Hero */
@@ -290,6 +367,139 @@ h1, h2, h3, h4 {
 .tour-text p {
   color: var(--muted);
   margin: 0;
+}
+
+/* Comparison table (build vs buy) */
+
+.table-scroll {
+  overflow-x: auto;
+  margin-top: 40px;
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.compare-table tr:last-child td {
+  border-bottom: none;
+}
+
+.compare-table th {
+  background: var(--bg-alt);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.compare-table td:first-child {
+  font-weight: 600;
+  color: var(--navy);
+  width: 26%;
+}
+
+.compare-table th:last-child,
+.compare-table td:last-child {
+  background: var(--blue-tint);
+}
+
+/* Download page: one row per image, Keycloak-downloads-page style */
+
+.download-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.download-table th,
+.download-table td {
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.download-table tr:last-child td {
+  border-bottom: none;
+}
+
+.download-table th {
+  background: var(--bg-alt);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.download-table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tour-cta {
+  margin-top: 56px;
+}
+
+/* Page title (tour, download, news: one h1 per page, same look as a section h2) */
+
+.page-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  text-align: center;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+
+/* News list: each entry is a card (reuses .feature for the border/radius/padding) */
+
+.news-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding: 0;
+}
+
+.news-card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.news-card-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.news-date {
+  color: var(--muted);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.news-card p {
+  margin: 0 0 16px;
+}
+
+.news-link {
+  font-weight: 600;
 }
 
 /* Tokens */
@@ -501,7 +711,8 @@ h1, h2, h3, h4 {
     display: none;
   }
 
-  .topbar nav a:not(.nav-github) {
+  .topbar nav a:not(.nav-github),
+  .topbar nav .nav-dropdown {
     display: none;
   }
 
