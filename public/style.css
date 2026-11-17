@@ -481,6 +481,7 @@ h1, h2, h3, h4 {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 8px;
+  background: var(--bg-alt);
 }
 
 .news-card-header h3 {
