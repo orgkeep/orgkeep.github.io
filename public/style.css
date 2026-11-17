@@ -480,8 +480,13 @@ h1, h2, h3, h4 {
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 8px;
+  /* Full-bleed: cancel .feature's 24px padding on top/left/right so the gray band reaches the card's
+     edges, then add its own padding back (horizontal matches .feature's so the text still lines up with
+     the description below it). */
+  margin: -24px -24px 8px;
+  padding: 14px 24px;
   background: var(--bg-alt);
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 
 .news-card-header h3 {
